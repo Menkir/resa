@@ -6,7 +6,7 @@ use reqwest::*;
 
 pub trait Solutions<T, E>{
     fn search(&mut self, txt: &str)->Result<T>;
-    fn filter_result(&self)->String;
+    fn filter(&mut self, amount_results: usize)-> &mut Self;
     fn preview(&self)->String;
 }
 

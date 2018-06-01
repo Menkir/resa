@@ -16,19 +16,13 @@ pub fn main() {
         query.push_str(arg.as_str());
         query.push(' ');
     }
-    println!("query: {:?}", query);
-    let solutions = StackOverflow::new()
-    .search(query.as_str());
-    let items = solutions.unwrap().items;
-    if items.len() > 0{
-        println!("{}", "There are some similar issues on StackOverflow:".red());
-        for e in items.iter(){
-        println!("{:?}", e.title);
-        println!("{}\n", e.link.trim_matches('"').yellow());
-        
-        }
-    } else{
-        println!("{}", "There are no some similar issues on StackOverflow".red());
-    }
     
+    println!("{}", "There are some similar issues on StackOverflow:".red());
+    StackOverflow::new()
+    .search(query.as_str())
+    .unwrap()
+    .filter(3)
+    .items
+    .iter()
+    .for_each(|entry| println!("{:?}\n{}\n", entry.title, entry.link.trim_matches('"').yellow()));
 }
