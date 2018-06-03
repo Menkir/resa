@@ -1,4 +1,4 @@
-extern crate untitled_rust_project;
+extern crate resa;
 use untitled_rust_project::Solutions;
 use untitled_rust_project::stackoverflow::*;
 

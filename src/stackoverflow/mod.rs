@@ -122,7 +122,7 @@ impl <'a> Solutions<StackOverflow, reqwest::Error> for  StackOverflow{
 
         let mut answers = answers_result.unwrap().items;
         answers.sort();
-        answers = answers.into_iter().take(3).collect();
+        answers = answers.into_iter().take(amount_results).collect();
         let mut items: Vec<StackOverflowResult> = Vec::new();
         for answer in answers{
             self.clone().items.into_iter()
