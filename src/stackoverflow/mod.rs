@@ -3,8 +3,17 @@ use reqwest;
 use std::cmp;
 const BASE_URL: &str = "http://www.api.stackexchange.com/";
 
+/// # General
+/// ## Example Usage
+/// 
+/// An example usage of this crate by using the StackOverflow REST API
+/// 
+/// `let result = resa::stackoverflow::StackOverflow::search("Compiler Error")`
+/// 
 #[derive(Deserialize, Debug,Clone)]
 pub struct StackOverflow{
+    /// Contains a list over all Results from type StackOverflowResult<
+    /// 
     pub items: Vec<StackOverflowResult>,
 }
 
@@ -87,8 +96,7 @@ impl PartialEq for Owner {
 }
 
 impl <'a> Solutions<StackOverflow, reqwest::Error> for  StackOverflow{
-    fn search(&mut self, txt: &str)->Result<StackOverflow, reqwest::Error>{
-        //get request to stackexchange webservice
+    fn search(txt: &str)->Result<StackOverflow, reqwest::Error>{
         let mut query = String::from(BASE_URL);
         query.push_str(format!("/2.2/search?order=desc&sort=activity&tagged=rust&intitle={}&site=stackoverflow", txt)
         .as_str());

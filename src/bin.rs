@@ -55,8 +55,7 @@ pub fn main() {
     let mut so: Vec<StackOverflow> = Vec::with_capacity(search_queries.len());
     
     for q in search_queries{
-        let mut temp = StackOverflow::new()
-        .search(&q);
+        let mut temp = StackOverflow::search(&q);
         if temp.is_ok(){
             so.push(temp.unwrap());
         } else{
