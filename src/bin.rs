@@ -1,11 +1,13 @@
 extern crate resa;
 extern crate colored;
+extern crate extractor;
 
 use resa::Solutions;
 use resa::stackoverflow::*;
 use colored::*;
 use std::process::Command;
 use std::ffi::OsString;
+use extractor::*;
 
 extern crate clap;
 use clap::{App};
@@ -31,7 +33,7 @@ pub fn main() {
                           .args_from_usage(
                               "<PATH>               'Sets the path file to use'
                               -f, --filter          'Filter Results by highest ranked answers'
-                              -r, --results=[AMOUNT]'Sets amount of result which should displayeds'
+                              -r, --results=[AMOUNT]'Sets amount of result which should displayed'
                               -v, --verbose         'Sets the level of verbosity'")
                           .get_matches();
 
@@ -51,15 +53,15 @@ pub fn main() {
         .expect("failed to execute process");
 
     let result = String::from_utf8_lossy(&command.stderr);    
-    let search_queries = get_err_description(result.to_string());
+    let search_queries = get_error_text_without_error_code(result.to_string());
     let mut so: Vec<StackOverflow> = Vec::with_capacity(search_queries.len());
     
     for q in search_queries{
         let mut temp = StackOverflow::search(&q);
         if temp.is_ok(){
-            so.push(temp.unwrap());
+            so.push(temp.unwrap()); //push found solutions
         } else{
-            so.push(StackOverflow::new());
+            so.push(StackOverflow::new()); //push empty object
         }
     }
     
@@ -103,38 +105,4 @@ pub fn main() {
         }
         
     }
-}
-
-fn get_err_description(output: String) -> Vec<String>{
-    let mut descriptions:Vec<String> = Vec::new();
-    let errors = structure_compiler_output(output);
-    for entry in errors.into_iter(){
-        let temp: Vec<&str> = entry.split('\n').collect();
-        descriptions.push(
-            cut_out(String::from(temp[0]).split_off(14))        
-        );
-    }
-    descriptions
-}
-
-fn cut_out(i: String)-> String{
-    let mut erg = String::new();
-    for c in i.split(' ').collect::<Vec<&str>>().iter(){
-        if !c.contains("´") && !c.contains("`"){
-            erg.push_str(*c);
-            erg.push(' ');
-        }
-    }
-    erg
-}
-
-fn structure_compiler_output(output: String)-> Vec<String>{
-    let mut errors:Vec<String> = Vec::new();
-    for entry in output.split("\n\n"){
-        let stringfied_entry = String::from(entry);
-        if stringfied_entry.contains("error["){
-            errors.push(stringfied_entry);
-        }
-    }
-    errors
 }
