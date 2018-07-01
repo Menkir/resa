@@ -7,6 +7,20 @@
 //! ```rust
 //! let result = resa::stackoverflow::StackOverflow::search("Compiler Error");
 //! ```
+//! ## Test
+//! Try the API by using the binary `resa` on following example:
+//! ```ignore
+//! fn main() {
+//!     let v = vec![1, 2, 3];
+//!     let v2 = v;
+//!     println!("v[0] is: {}", v[0]);
+//!     const C: i32 = 2;
+//!     static CONST_REF: &'static mut i32 = &mut C;
+//!    }
+//! ```
+//! ```bash
+//! resa -f -r 3 fail.rs
+//! ```
 #[macro_use]
 extern crate serde_derive;
 

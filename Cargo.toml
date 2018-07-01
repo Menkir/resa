@@ -2,6 +2,14 @@
 name = "resa"
 version = "0.1.0"
 authors = ["Kirill Meng <kimeng@htwg-konstanz.de>"]
+repository = "https://github.com/Menkir/resa"
+license = "Unlicense"
+description = """
+Modular Rest interface for searching similar compiler errors to get possible solutions.
+"""
+
+[badges]
+travis-ci = { repository = "Menkir/resa" }
 
 [dependencies]
 reqwest = "0.8.5"
@@ -10,7 +18,8 @@ serde_json = "1.0.17"
 serde_derive = "1.0.55"
 colored = "1.6"
 clap = "~2.27.0"
+extractor = "0.1.0"
 
 [[bin]]
-name = "rofl"
+name = "resa"
 path = "src/bin.rs"
