@@ -5,11 +5,13 @@
 //! ## Example Usage
 //! An example usage of this crate by using the StackOverflow REST API
 //! ```rust
+//! extern crate resa;
+//! use resa::*;
 //! let result = resa::stackoverflow::StackOverflow::search("Compiler Error");
 //! ```
 //! ## Test
 //! Try the API by using the binary `resa` on following example:
-//! ```ignore
+//! ```rust ignore
 //! fn main() {
 //!     let v = vec![1, 2, 3];
 //!     let v2 = v;

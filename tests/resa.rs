@@ -5,7 +5,8 @@ use resa::stackoverflow::*;
 #[test]
 fn crate_test(){
     let mut s: StackOverflow = StackOverflow::search("Compiler error").unwrap();
-    assert!(s.items.len() == 1);
+    println!("{:?}", s.items.len());
+    assert!(s.items.len() >= 1);
         
     s.filter(4);
     assert_eq!(s.items.len(), 4);
