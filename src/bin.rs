@@ -26,8 +26,8 @@ struct Entry {
 }
 
 pub fn main() {
-    let matches = App::new("rofl")
-        .version("1.0")
+    let matches = App::new("resa")
+        .version("0.1.0")
         .author("Kirill M. <kimeng@htwg-konstanz.de>")
         .about(
             "Wrapper for Compiler to analyze errors and search for solutions",
