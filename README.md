@@ -1,7 +1,5 @@
 # resa [![Build Status](https://travis-ci.org/Menkir/resa.svg?branch=master)](https://travis-ci.org/Menkir/resa)
-Rust API for error searching on particular platform like i.e StackOverflow
-
-<span style="color: red">!! not available on crates.io, release on 1st July 18 !!</span>
+Rust API for error searching on particular platform like i.e StackOverflow. The main purpose is to decrease the time for searching issues on certin platforms.
 
 ## Installation
 Apply changes on your `Cargo.toml`
