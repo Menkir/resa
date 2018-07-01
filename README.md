@@ -8,6 +8,11 @@ Apply changes on your `Cargo.toml`
 resa = "0.1.0"
 ````
 
+Or install the binary with
+```bash
+cargo install resa
+```
+
 ## API Example usage
 ```` rust
 extern crate resa;
