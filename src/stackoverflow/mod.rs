@@ -1,19 +1,15 @@
+//! Module for searching errors over StackOverflow platform.
+//! 
+//! It implements the Solutions Trait.
+
 use Solutions;
 use reqwest;
 use std::cmp;
 const BASE_URL: &str = "http://www.api.stackexchange.com/";
 
-/// # General
-/// ## Example Usage
-/// 
-/// An example usage of this crate by using the StackOverflow REST API
-/// 
-/// `let result = resa::stackoverflow::StackOverflow::search("Compiler Error")`
-/// 
 #[derive(Deserialize, Debug,Clone)]
 pub struct StackOverflow{
-    /// Contains a list over all Results from type StackOverflowResult<
-    /// 
+    /// List of Results
     pub items: Vec<StackOverflowResult>,
 }
 
@@ -96,6 +92,7 @@ impl PartialEq for Owner {
 }
 
 impl <'a> Solutions<StackOverflow, reqwest::Error> for  StackOverflow{
+    /// Apply search Request and deserialize the response into StackOverflow struct
     fn search(txt: &str)->Result<StackOverflow, reqwest::Error>{
         let mut query = String::from(BASE_URL);
         query.push_str(format!("/2.2/search?order=desc&sort=activity&tagged=rust&intitle={}&site=stackoverflow", txt)
@@ -105,6 +102,8 @@ impl <'a> Solutions<StackOverflow, reqwest::Error> for  StackOverflow{
         Ok(result)
     }
 
+    /// Filter by number of amount results and by the score.
+    /// The highest scored answer of an issue is taken
     fn filter(&mut self, amount_results: usize) -> &mut Self{
         let mut answer_ids: Vec<usize> = Vec::new();
         for entry in self.items.clone(){
@@ -140,10 +139,5 @@ impl <'a> Solutions<StackOverflow, reqwest::Error> for  StackOverflow{
         }
         self.items = items;
         self
-    }
-
-    fn preview(&self)->String{
-        //TODO
-     "preview".to_string() 
     }
 }
