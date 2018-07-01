@@ -3,6 +3,7 @@ use resa::Solutions;
 use resa::stackoverflow::*;
 
 #[test]
+#[ignore]
 fn crate_test(){
     let mut s: StackOverflow = StackOverflow::search("Compiler error").unwrap();
     println!("{:?}", s.items.len());
