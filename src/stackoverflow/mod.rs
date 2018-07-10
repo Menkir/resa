@@ -5,7 +5,7 @@
 use Solutions;
 use reqwest;
 use std::cmp;
-const BASE_URL: &str = "http://www.api.stackexchange.com/";
+const BASE_URL: &str = "http://api.stackexchange.com";
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct StackOverflow {
