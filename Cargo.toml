@@ -1,6 +1,6 @@
 [package]
 name = "resa"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Kirill Meng <kimeng@htwg-konstanz.de>"]
 repository = "https://github.com/Menkir/resa"
 license = "Unlicense"
