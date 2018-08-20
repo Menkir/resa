@@ -636,7 +636,7 @@ dependencies = [
 
 [[package]]
 name = "resa"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "clap 2.27.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "colored 1.6.0 (registry+https://github.com/rust-lang/crates.io-index)",
