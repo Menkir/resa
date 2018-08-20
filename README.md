@@ -5,7 +5,7 @@ Rust API for error searching on particular platform like i.e StackOverflow. The 
 Apply changes on your `Cargo.toml`
 ```` toml
 [dependencies]
-resa = "0.1.0"
+resa = "0.1.1"
 ````
 
 Or install the binary with
