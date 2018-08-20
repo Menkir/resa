@@ -23,7 +23,7 @@ fn main(){
                             .filter(3);
 
     for issues in s.items{
-        println!("(:?)", issues);
+        println!("{:?}", issues);
     }
 }
 ````
